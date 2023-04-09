@@ -1,0 +1,5 @@
+export { default as SearchScreen } from './SearchScreen'
+export { default as NewMovieScreen } from './NewMovieScreen'
+export { default as TopMovieScreen } from './TopMovieScreen'
+export { default as CatalogScreen } from './CatalogScreen'
+export { default as CardScreen } from './CardScreen'
