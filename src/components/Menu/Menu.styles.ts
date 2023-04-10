@@ -16,11 +16,11 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     marginTop: scale(7),
-    marginBottom: scale(8)
+    marginBottom: scale(6)
   },
   menuItem: {
     alignItems: 'center',
-    marginBottom: scale(8),
+    marginBottom: scale(6),
     position: 'relative'
   }
 })

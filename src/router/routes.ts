@@ -4,13 +4,14 @@ import {
   CatalogScreen,
   NewMovieScreen,
   TopMovieScreen,
+  VideoPlayerScreen,
+  SearchScreen,
+  CardScreen,
+  CategoriesScreen
   // ViewedScreen,
   // FavoritesScreen,
-  VideoPlayerScreen,
   // AuthenticationScreen,
   // SettingsScreen,
-  SearchScreen,
-  CardScreen
 } from '~/screens'
 
 const defaultRoute = Routes.newmovie
@@ -27,6 +28,10 @@ const ROUTE_COMPONENTS = {
   topmovie: {
     name: Routes.topmovie,
     component: TopMovieScreen
+  },
+  categories: {
+    name: Routes.categories,
+    component: CategoriesScreen
   },
   catalog: {
     name: Routes.catalog,

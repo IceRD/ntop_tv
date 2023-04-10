@@ -1,6 +1,6 @@
 export { default as IconHome } from 'assets/svg/home.svg'
 export { default as IconSearch } from 'assets/svg/search.svg'
-export { default as IconCinema } from 'assets/svg/cinema.svg'
+export { default as IconCategories } from 'assets/svg/categories.svg'
 export { default as IconFavorite } from 'assets/svg/favorite.svg'
 export { default as IconLike } from 'assets/svg/like.svg'
 export { default as IconNew } from 'assets/svg/new.svg'

@@ -35,6 +35,16 @@ const ScreenWithLayoutNavigation = function () {
         screenOptions={stackNavigatorOptions}
         initialRouteName={defaultRoute}>
         <StackLayout.Screen
+          name={ROUTE_COMPONENTS.categories.name}
+          component={ROUTE_COMPONENTS.categories.component}
+          options={stackScreenOptions}
+        />
+        <StackLayout.Screen
+          name={ROUTE_COMPONENTS.catalog.name}
+          component={ROUTE_COMPONENTS.catalog.component}
+          options={stackScreenOptions}
+        />
+        <StackLayout.Screen
           name={ROUTE_COMPONENTS.newmovie.name}
           component={ROUTE_COMPONENTS.newmovie.component}
           options={stackScreenOptions}
@@ -49,11 +59,7 @@ const ScreenWithLayoutNavigation = function () {
           component={ROUTE_COMPONENTS.search.component}
           options={stackScreenOptions}
         />
-        <StackLayout.Screen
-          name={ROUTE_COMPONENTS.catalog.name}
-          component={ROUTE_COMPONENTS.catalog.component}
-          options={stackScreenOptions}
-        />
+
         <StackLayout.Screen
           name={ROUTE_COMPONENTS.card.name}
           component={ROUTE_COMPONENTS.card.component}

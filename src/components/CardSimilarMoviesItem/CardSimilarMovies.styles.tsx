@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   textContainer: {
     backgroundColor: Colors.textBackground,
     position: 'absolute',
-    bottom: 0,
+    bottom: -1,
     left: 0,
     right: 0,
     padding: scale(4),

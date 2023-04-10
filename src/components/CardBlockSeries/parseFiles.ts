@@ -3,20 +3,24 @@ function parseFiles(items: any[]) {
 
   for (let i = 0; i < items.length; i++) {
     let currentEl = items[i]
-    let id = currentEl.resolution_id
+    let id = currentEl?.resolution_id
+
+    if (!id) continue
 
     if (obj[id] === undefined) {
       obj[id] = {}
     }
 
-    let n = currentEl.name.split('.')[0]
-    let season_id = n.split('_').pop()
+    let arr = currentEl.name.split('.')
+    let season = arr.find(el => el.indexOf('season') !== -1).split('_')
+    let season_id = season[season.length - 1].replace(/[^a-z0-9]/gi, '')
+    let name = arr.find(el => el.indexOf('CD') !== -1)
 
     if (obj[id][season_id] === undefined) {
       obj[id][season_id] = []
     }
 
-    obj[id][season_id].push(currentEl)
+    obj[id][season_id].push({ ...currentEl, name })
   }
 
   const normalize: any = {}

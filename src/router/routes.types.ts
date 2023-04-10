@@ -1,14 +1,15 @@
 export enum Routes {
   search = 'Search',
   catalog = 'Catalog',
+  categories = 'Categories',
   newmovie = 'NewMovie',
   topmovie = 'TopMovie',
   viewed = 'Viewed',
-  favorites = 'Favorites',
-  authentication = 'Authentication',
   videoplayer = 'VideoPlayerScreen',
-  settings = 'Settings',
   card = 'Card',
-  cinema = 'Cinema',
+  favorites = 'Favorites',
   rating = 'Rating'
+  // authentication = 'Authentication',
+  // settings = 'Settings',
+  // cinema = 'Cinema',
 }

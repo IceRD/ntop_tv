@@ -4,7 +4,7 @@ import { IProps } from './Icons.types'
 import {
   // IconHome,
   IconSearch,
-  IconCinema,
+  IconCategories,
   IconFavorite,
   IconLike,
   IconNew,
@@ -19,10 +19,10 @@ function Icon({ name, ...props }: IProps) {
   switch (name) {
     case 'Search':
       return <IconSearch {...props} />
+    case 'Categories':
+      return <IconCategories {...props} />
     case 'Catalog':
       return <IconCatalog {...props} />
-    case 'Cinema':
-      return <IconCinema {...props} />
     case 'NewMovie':
       return <IconNew {...props} />
     case 'TopMovie':

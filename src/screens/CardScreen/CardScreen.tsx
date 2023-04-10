@@ -58,9 +58,9 @@ function CardScreen({ route }) {
           </View>
         </View>
 
-        {/* <View>
+        <View>
           <CardMovieList items={data.files} statusId={data.StatusSeries} />
-        </View> */}
+        </View>
 
         {Array.isArray(data.other_movies) && data.other_movies.length && (
           <View style={styles.similar}>
