@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { ScrollView, View, TouchableOpacity, Image, Text } from 'react-native'
-import NavigationContext from '~/context/navigation'
 import styles from './Menu.styles'
 import { useSelector } from 'react-redux'
 import FocusType from '~/store/focusSlice/focusSlice.types'
@@ -8,12 +7,14 @@ import { MENU } from '~/router/menu'
 import { StackName } from '~/navigations/Navigation.types'
 import Icon from '~/components/Icons'
 import MenuItem from '~/components/MenuItem'
+import { useNavigationRef } from '~/hooks/useNavigationRef'
 
 const Menu = ({}) => {
   // const [focus, setFocus] = useState<boolean>(false)
   const focus = useSelector(state => state.focus.currentFocus)
   const isFocusMenu = focus === FocusType.menu
-  const { navigationRef } = useContext(NavigationContext)
+
+  const { navigationRef } = useNavigationRef()
 
   return (
     <View style={[styles.wrapper, isFocusMenu ? styles.wrapperFocused : null]}>

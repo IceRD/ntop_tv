@@ -1,16 +1,33 @@
 import { StyleSheet } from 'react-native'
 import { Colors } from '~/theme'
+import { scale, verticalScale, moderateScale } from '~/utils/scaling'
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 20,
-    marginLeft: 30
+    padding: scale(11)
   },
-  header: {
-    fontSize: 16,
-    marginBottom: 15,
-    color: Colors.text,
-    fontWeight: 'bold'
+  topContainer: {
+    flexDirection: 'row',
+    marginBottom: scale(11)
+  },
+  imageWrapper: {
+    flex: 1,
+    borderColor: 'transparent',
+    borderWidth: 3,
+    borderRadius: 8,
+    overflow: 'hidden'
+  },
+  image: {
+    width: '100%',
+    // height: moderateScale(180),
+    aspectRatio: 4 / 6
+  },
+  info: {
+    flex: 2,
+    paddingLeft: scale(11)
+  },
+  similar: {
+    marginBottom: scale(22)
   }
 })
 

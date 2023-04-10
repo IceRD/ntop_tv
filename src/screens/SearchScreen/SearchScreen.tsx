@@ -1,13 +1,11 @@
 import React from 'react'
-import { View, Text, ScrollView } from 'react-native'
-// import { useNewMoviesQuery } from '~/hooks/useNewMoviesQuery'
-// import { Gallery, GalleryItem } from '~/components'
-// import styles from './SearchScreen.styles'
+import { View, Text } from 'react-native'
+import styles from './SearchScreen.styles'
 
 function SearchScreen() {
   return (
-    <View>
-      <Text>SEARCH</Text>
+    <View style={styles.wrapper}>
+      <Text style={styles.text}>SEARCH</Text>
     </View>
   )
 }

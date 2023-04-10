@@ -9,15 +9,21 @@ import {
 } from 'react-native'
 import styles from './GalleryItem.styles'
 import { IGalleryItem } from './GalleryItem.types'
+import { StackName } from '~/navigations/Navigation.types'
+import { Routes } from '~/router/routes.types'
+import { useNavigationRef } from '~/hooks/useNavigationRef'
 
-const GalleryItem = ({
+function GalleryItem({
+  movie_id,
   title,
   image,
   year,
   hasTVPreferredFocus,
   blockFocusRight
-}: IGalleryItem) => {
+}: IGalleryItem) {
   const [focus, setFocus] = useState(false)
+
+  const { navigationRef } = useNavigationRef()
 
   const onFocus = useCallback(() => {
     setFocus(true)
@@ -49,7 +55,15 @@ const GalleryItem = ({
       ref={onRef}
       nextFocusRight={
         blockFocusRight ? findNodeHandle(touchableHighlightRef.current) : null
-      }>
+      }
+      onPress={() => {
+        navigationRef.navigate(StackName.root, {
+          params: {
+            movie_id
+          },
+          screen: Routes.card
+        })
+      }}>
       <View>
         <Image style={styles.image} source={{ uri: image }} />
         <View style={styles.textContainer}>

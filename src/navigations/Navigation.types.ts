@@ -9,5 +9,6 @@ export type RootStackParamList = {
 }
 
 export enum StackName {
-  root = 'ScreenWithLayoutNavigation'
+  root = 'ScreenWithLayoutNavigation',
+  videoplayer = 'VideoPlayerScreen'
 }

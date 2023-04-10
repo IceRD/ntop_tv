@@ -5,7 +5,8 @@ enum Colors {
   menuBackground = 'rgb(24, 18, 43)',
   menuActiveBackground = 'rgba(51, 42, 80, 0.95)',
   textBackground = 'rgba(51, 42, 80, 0.95)',
-  focusBorderColor = 'rgba(113, 74, 221, 1)'
+  focusBorderColor = 'rgba(113, 74, 221, 1)',
+  rating = 'rgb(255,204,0)'
 }
 
 export default Colors

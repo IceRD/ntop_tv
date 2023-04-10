@@ -6,6 +6,7 @@ import { ROUTE_COMPONENTS, defaultRoute } from '~/router/routes'
 import { DefaultLayout } from '~/layouts'
 import { Colors } from '~/theme'
 import { StackName } from '../Navigation.types'
+import { useNavigationRef } from '~/hooks/useNavigationRef'
 
 const RootStack = createNativeStackNavigator()
 const StackLayout = createNativeStackNavigator()
@@ -53,15 +54,18 @@ const ScreenWithLayoutNavigation = function () {
           component={ROUTE_COMPONENTS.catalog.component}
           options={stackScreenOptions}
         />
+        <StackLayout.Screen
+          name={ROUTE_COMPONENTS.card.name}
+          component={ROUTE_COMPONENTS.card.component}
+          options={stackScreenOptions}
+        />
       </StackLayout.Navigator>
     </DefaultLayout>
   )
 }
 
 const MainNavigation = function () {
-  const { navigationRef } = useContext(NavigationContext)
-
-  console.log({ navigationRef, root: StackName.root })
+  const { navigationRef } = useNavigationRef()
 
   return (
     <NavigationContainer ref={navigationRef} theme={navigationContainerTheme}>
@@ -73,16 +77,11 @@ const MainNavigation = function () {
           component={ScreenWithLayoutNavigation}
         />
         <RootStack.Screen
-          name={ROUTE_COMPONENTS.card.name}
-          component={ROUTE_COMPONENTS.card.component}
-          options={stackScreenOptions}
-        />
-        {/* <RootStack.Screen
-          name={routes.videoplayer.name}
-          component={routes.videoplayer.component}
+          name={ROUTE_COMPONENTS.videoplayer.name}
+          component={ROUTE_COMPONENTS.videoplayer.component}
           options={stackScreenOptions}
           onFocus={() => console.log('onFocus screen')}
-        /> */}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   )

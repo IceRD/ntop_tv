@@ -1,14 +1,15 @@
 import { StyleSheet } from 'react-native'
 import { Colors } from '~/theme'
+import { scale, verticalScale, moderateScale } from '~/utils/scaling'
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 20,
-    marginLeft: 30
+    marginTop: scale(8),
+    marginLeft: scale(11)
   },
   header: {
-    fontSize: 16,
-    marginBottom: 15,
+    fontSize: moderateScale(9),
+    marginBottom: scale(6),
     color: Colors.text,
     fontWeight: 'bold'
   }

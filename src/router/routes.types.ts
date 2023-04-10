@@ -9,5 +9,6 @@ export enum Routes {
   videoplayer = 'VideoPlayerScreen',
   settings = 'Settings',
   card = 'Card',
-  cinema = 'Cinema'
+  cinema = 'Cinema',
+  rating = 'Rating'
 }

@@ -6,7 +6,7 @@ import {
   TopMovieScreen,
   // ViewedScreen,
   // FavoritesScreen,
-  // VideoPlayerScreen,
+  VideoPlayerScreen,
   // AuthenticationScreen,
   // SettingsScreen,
   SearchScreen,
@@ -33,8 +33,12 @@ const ROUTE_COMPONENTS = {
     component: CatalogScreen
   },
   card: {
-    name: Routes.settings,
+    name: Routes.card,
     component: CardScreen
+  },
+  videoplayer: {
+    name: Routes.videoplayer,
+    component: VideoPlayerScreen
   }
 }
 

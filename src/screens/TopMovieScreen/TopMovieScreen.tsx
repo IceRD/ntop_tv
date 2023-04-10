@@ -7,8 +7,6 @@ import styles from './TopMovieScreen.styles'
 function TopMovieScreen() {
   const { data, isLoading, isSuccess, isError } = useTopMoviesQuery()
 
-  console.log(data, isLoading, isSuccess, isError)
-
   if (isLoading)
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

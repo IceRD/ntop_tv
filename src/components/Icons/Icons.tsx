@@ -11,7 +11,8 @@ import {
   IconViewed,
   IconCatalog,
   IconAccount,
-  IconSetting
+  IconSetting,
+  IconRating
 } from './list'
 
 function Icon({ name, ...props }: IProps) {
@@ -30,6 +31,8 @@ function Icon({ name, ...props }: IProps) {
       return <IconViewed {...props} />
     case 'Favorites':
       return <IconFavorite {...props} />
+    case 'Rating':
+      return <IconRating {...props} />
     default:
       return null
   }

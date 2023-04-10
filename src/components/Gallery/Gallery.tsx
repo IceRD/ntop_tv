@@ -13,6 +13,7 @@ const Gallery = ({ rowNumber, items }) => {
           title={item.name}
           image={urlImagePath(item.cover)}
           year={item.year}
+          movie_id={item.movie_id}
           hasTVPreferredFocus={rowNumber === 0 && i === 0}
           blockFocusRight={i === items.length - 1}
         />

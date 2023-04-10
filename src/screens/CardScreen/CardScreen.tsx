@@ -1,13 +1,23 @@
 import React from 'react'
-import { View, Text, ScrollView } from 'react-native'
-import { useNewMoviesQuery } from '~/hooks/useNewMoviesQuery'
-import { Gallery, GalleryItem } from '~/components'
+import { View, Text, Image, ScrollView } from 'react-native'
+import { IProps } from './CardScreen.types'
+// import { useNewMoviesQuery } from '~/hooks/useNewMoviesQuery'
+// import { Gallery, GalleryItem } from '~/components'
 import styles from './CardScreen.styles'
+import { useMovieQuery } from '~/hooks/useMovieQuery'
+import { urlImagePath } from '~/utils/urlImagePath'
+import {
+  CardHeader,
+  CardDescription,
+  CardGallery,
+  CardSimilarMovies,
+  CardMovieList
+} from '~/components'
 
-function NewMovieScreen() {
-  const { data, isLoading, isSuccess, isError } = useNewMoviesQuery()
+function CardScreen({ route }) {
+  const { movie_id } = route.params
 
-  console.log(data, isLoading, isSuccess, isError)
+  const { data, isLoading, isSuccess, isError } = useMovieQuery({ movie_id })
 
   if (isLoading)
     return (
@@ -24,23 +34,42 @@ function NewMovieScreen() {
     )
 
   return (
-    <ScrollView contentInsetAdjustmentBehavior="automatic">
-      <View style={styles.wrapper}>
-        {isSuccess &&
-          data.map((items, index) => (
-            <View key={items.category_id}>
-              <Text accessible={false} style={styles.header}>
-                {items.name}
-              </Text>
-              <Gallery
-                rowNumber={index === 0 ? 0 : null}
-                items={items.movies}
-              />
-            </View>
-          ))}
-      </View>
-    </ScrollView>
+    isSuccess && (
+      <ScrollView style={[styles.wrapper]}>
+        <View style={[styles.topContainer]}>
+          <View style={[styles.imageWrapper]}>
+            <Image
+              style={styles.image}
+              source={{ uri: urlImagePath(data.covers[0].original) }}
+            />
+          </View>
+
+          <View style={styles.info}>
+            <CardHeader
+              name={data.name}
+              year={data.year}
+              countries={data.countries}
+              rating_kinopoisk={data.rating_kinopoisk_value}
+              rating_imdb={data.rating_imdb_value}
+              quality={data.quality}
+            />
+            <CardDescription text={data.description} />
+            <CardGallery items={data.files[data.files.length - 1]} />
+          </View>
+        </View>
+
+        {/* <View>
+          <CardMovieList items={data.files} statusId={data.StatusSeries} />
+        </View> */}
+
+        {Array.isArray(data.other_movies) && data.other_movies.length && (
+          <View style={styles.similar}>
+            <CardSimilarMovies items={data.other_movies} />
+          </View>
+        )}
+      </ScrollView>
+    )
   )
 }
 
-export default NewMovieScreen
+export default CardScreen
