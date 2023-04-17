@@ -6,7 +6,16 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     width: '100%',
-    height: '100%'
+    height: '100%',
+    backgroundColor: '#000000'
+  },
+  wrapperError: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: scale(20)
+  },
+  error: {
+    color: '#ffffff'
   }
 })
 

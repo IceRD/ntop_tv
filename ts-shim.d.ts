@@ -8,3 +8,8 @@ declare module '*.svg' {
   const content: React.FC<SvgProps>
   export default content
 }
+
+declare module 'react-native-video' {
+  import Video from 'react-native-video'
+  export default Video
+}

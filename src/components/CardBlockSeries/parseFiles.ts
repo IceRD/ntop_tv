@@ -12,9 +12,22 @@ function parseFiles(items: any[]) {
     }
 
     let arr = currentEl.name.split('.')
-    let season = arr.find(el => el.indexOf('season') !== -1).split('_')
-    let season_id = season[season.length - 1].replace(/[^a-z0-9]/gi, '')
-    let name = arr.find(el => el.indexOf('CD') !== -1)
+    let seasonIndex = arr.find(el => el.indexOf('season') !== -1)
+    let season_id
+
+    /**
+     * Если файлов много и нет привязки к сезону, указываем по дефолту Без группы
+     */
+    if (seasonIndex === undefined) {
+      season_id = 'Без группы'
+    } else {
+      let season = seasonIndex.split('_')
+      season_id = season[season.length - 1]
+        .replace(/[^a-z0-9]/gi, '')
+        .replace('season', 'Сезон ')
+    }
+
+    let name = arr.find(el => el.indexOf('CD') !== -1) || 'CDXX'
 
     if (obj[id][season_id] === undefined) {
       obj[id][season_id] = []

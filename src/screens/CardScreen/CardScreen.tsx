@@ -1,8 +1,6 @@
 import React from 'react'
 import { View, Text, Image, ScrollView } from 'react-native'
 import { IProps } from './CardScreen.types'
-// import { useNewMoviesQuery } from '~/hooks/useNewMoviesQuery'
-// import { Gallery, GalleryItem } from '~/components'
 import styles from './CardScreen.styles'
 import { useMovieQuery } from '~/hooks/useMovieQuery'
 import { urlImagePath } from '~/utils/urlImagePath'
@@ -14,7 +12,7 @@ import {
   CardMovieList
 } from '~/components'
 
-function CardScreen({ route }) {
+function CardScreen({ route }: any) {
   const { movie_id } = route.params
 
   const { data, isLoading, isSuccess, isError } = useMovieQuery({ movie_id })
@@ -32,6 +30,12 @@ function CardScreen({ route }) {
         <Text>Oops, something went wrong ...</Text>
       </View>
     )
+
+  if (isSuccess) {
+  }
+
+  const isOtherMovies =
+    Array.isArray(data.other_movies) && data.other_movies.length > 0
 
   return (
     isSuccess && (
@@ -58,11 +62,11 @@ function CardScreen({ route }) {
           </View>
         </View>
 
-        <View>
+        <View style={[!isOtherMovies && styles.similar]}>
           <CardMovieList items={data.files} statusId={data.StatusSeries} />
         </View>
 
-        {Array.isArray(data.other_movies) && data.other_movies.length && (
+        {isOtherMovies && (
           <View style={styles.similar}>
             <CardSimilarMovies items={data.other_movies} />
           </View>

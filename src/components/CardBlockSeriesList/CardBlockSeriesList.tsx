@@ -7,7 +7,6 @@ const CardBlockSeriesList = ({ rowNumber, items }) => {
   return (
     <ScrollView horizontal style={styles.wrapper}>
       {items.map((item, i) => (
-        // <Text key={item.file_id}> {JSON.stringify(item)}</Text>
         <CardBlockSeriesListItem
           key={item.file_id}
           item={item}

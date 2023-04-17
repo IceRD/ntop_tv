@@ -1,11 +1,11 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react'
+import React, { useState, useCallback, useRef } from 'react'
 import { Text, View, TouchableHighlight, findNodeHandle } from 'react-native'
-import styles from './CardBlockSeriesListItem.styles'
-import { IGalleryItem } from './CardBlockSeriesListItem.types'
+import styles from './CardBlockSinglItem.styles'
+import { IGalleryItem } from './CardBlockSinglItem.types'
 import { StackName } from '~/navigations/Navigation.types'
 import { useNavigationRef } from '~/hooks/useNavigationRef'
 
-function CardBlockSeriesListItem({
+function CardBlockSinglItem({
   item,
   hasTVPreferredFocus,
   blockFocusRight
@@ -20,12 +20,6 @@ function CardBlockSeriesListItem({
 
   const onBlur = useCallback(() => {
     setFocus(false)
-  }, [])
-
-  useEffect(() => {
-    if (hasTVPreferredFocus) {
-      setFocus(true)
-    }
   }, [])
 
   const touchableHighlightRef = useRef(null)
@@ -52,7 +46,7 @@ function CardBlockSeriesListItem({
       }}>
       <View>
         <View style={styles.textContainer}>
-          <Text style={styles.text}>{item.name}</Text>
+          <Text style={styles.text}>CD01.{item.ext}</Text>
           <Text style={styles.time}>{item.metainfo.playtime}</Text>
         </View>
       </View>
@@ -60,4 +54,4 @@ function CardBlockSeriesListItem({
   )
 }
 
-export default CardBlockSeriesListItem
+export default CardBlockSinglItem

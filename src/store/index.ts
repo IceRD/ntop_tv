@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import focusReducer from './focusSlice/focusSlice'
+import lastMoviesReducer from './lastMovies/lastMoviesSlice'
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    focus: focusReducer
+    focus: focusReducer,
+    lastMovies: lastMoviesReducer
   }
 })
 
-export default store
+export type RootState = ReturnType<typeof store.getState>
+
+export type AppDispatch = typeof store.dispatch

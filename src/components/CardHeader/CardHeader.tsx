@@ -22,7 +22,9 @@ function CardHeader({
     <View style={styles.header}>
       <View>
         <View style={styles.titleContainer}>
-          <Text style={styles.titleContainer_title}>{name}</Text>
+          <Text accessible={false} style={styles.titleContainer_title}>
+            {name}
+          </Text>
         </View>
         <View>
           <Text accessible={false} style={styles.titleContainer_description}>

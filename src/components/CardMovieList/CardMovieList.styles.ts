@@ -4,7 +4,7 @@ import { scale, verticalScale, moderateScale } from '~/utils/scaling'
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginBottom: scale(6)
+    marginBottom: scale(8)
   }
 })
 

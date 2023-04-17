@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { ScrollView, View, Text, TouchableHighlight } from 'react-native'
+import { View, Text, TouchableHighlight } from 'react-native'
 import { Chip, CardBlockSeriesList } from '~/components'
 import styles from './CardBlockSeries.styles'
-import { QUALITY } from './CardBlockSeries.types'
+import { videoQuality } from '~/data/videoQuality'
 import parseFiles from './parseFiles'
 
 const CardBlockSeries = ({ items }) => {
@@ -21,12 +21,12 @@ const CardBlockSeries = ({ items }) => {
   }
 
   return (
-    <View style={styles.wrapper}>
+    <View>
       <View style={{ flexDirection: 'row' }}>
         {keys.map(key => (
           <Chip
             key={key}
-            text={QUALITY[key]}
+            text={videoQuality[key]}
             active={tab === key}
             style={{ marginRight: 10, marginBottom: 20 }}
             onPress={() => setTab(prev => (prev = key))}
@@ -37,7 +37,7 @@ const CardBlockSeries = ({ items }) => {
       <View>
         {obj[tab].items.map(({ title, value }, index) => {
           return (
-            <View key={value.file_id}>
+            <View key={index}>
               <Text accessible={false} style={styles.title}>
                 {title}
               </Text>

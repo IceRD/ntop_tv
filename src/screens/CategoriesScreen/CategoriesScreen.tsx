@@ -10,12 +10,16 @@ import {
 import { IProps } from './CategoriesScreen.types'
 import genres from '~/data/genres'
 import styles from './CategoriesScreen.styles'
+import { useNavigationRef } from '~/hooks/useNavigationRef'
+import { StackName } from '~/navigations/Navigation.types'
+import { Routes } from '~/router/routes.types'
 
-function CatalogScreen() {
+function CategoriesScreen() {
+  const { navigationRef } = useNavigationRef()
+
   const [focus, setFocus] = useState<number>(0)
 
   function onFocus(index) {
-    console.log(index)
     setFocus(index)
   }
 
@@ -30,12 +34,15 @@ function CatalogScreen() {
             onFocus={() => onFocus(index)}
             style={[styles.card, focus === index && styles.focused]}
             key={item.key}
-            onPress={() => {}}>
-            <ImageBackground
-              source={item.uri}
-              style={{
-                aspectRatio: 16 / 9
-              }}>
+            onPress={() => {
+              navigationRef.navigate(StackName.root, {
+                params: {
+                  genre: item.key
+                },
+                screen: Routes.catalog
+              })
+            }}>
+            <ImageBackground source={item.uri} style={styles.image}>
               <View style={styles.overlay}>
                 <Text style={styles.text}>{item.name}</Text>
               </View>
@@ -49,4 +56,4 @@ function CatalogScreen() {
   )
 }
 
-export default CatalogScreen
+export default CategoriesScreen

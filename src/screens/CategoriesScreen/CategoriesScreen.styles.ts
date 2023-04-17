@@ -35,6 +35,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.overlayCard
   },
+  image: {
+    width: '100%',
+    height: '100%'
+  },
   focused: {
     borderColor: Colors.focusBorderColor
   }

@@ -4,7 +4,7 @@ import { useNavigationContainerRef } from '@react-navigation/native'
 import NavigationContext from '~/context/navigation'
 import MainNavigation from '~/navigations/MainNavigation'
 import { Provider as ReduxProvider } from 'react-redux'
-import store from '~/store'
+import { store } from '~/store'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()

@@ -1,17 +1,47 @@
 import api from '~/api'
-import { useQuery } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
+import { useInfiniteQuery } from '@tanstack/react-query'
 
-interface IProps {
-  page?: number
-  genre?: string
+export const useCatalogQuery = ({ genre }) => {
+  const { data, isLoading, isError, fetchNextPage, hasNextPage } =
+    useInfiniteQuery(
+      ['catalog', genre],
+      ({ pageParam = 0 }) => api.catalog.get({ pageParam, genre }),
+      {
+        staleTime: 0,
+        getNextPageParam: lastPage => {
+          const total = Number(lastPage.total)
+          const pagesize = Number(lastPage.pagesize)
+          const offset = Number(lastPage.offset)
+          const pageParam = Number(lastPage.pageParam)
+
+          console.log(total, pagesize, offset)
+
+          if (total > pagesize + offset && pagesize > 0) {
+            return pageParam + 1
+          }
+
+          return false
+        }
+      }
+    )
+
+  const catalog = useMemo(
+    () =>
+      data?.pages.reduce((acc, curr) => {
+        acc.push(...curr.movies)
+
+        return acc
+      }, []),
+    [data]
+  )
+
+  return {
+    isError,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    catalog
+  }
 }
-
-function useCatalogQuery(payload: IProps) {
-  return useQuery({
-    queryKey: ['catalog'],
-    queryFn: () => api.catalog.get(payload),
-    staleTime: 1000 * 60
-  })
-}
-
-export { useCatalogQuery }

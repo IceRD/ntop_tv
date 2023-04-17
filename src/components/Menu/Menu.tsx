@@ -8,6 +8,7 @@ import { StackName } from '~/navigations/Navigation.types'
 import Icon from '~/components/Icons'
 import MenuItem from '~/components/MenuItem'
 import { useNavigationRef } from '~/hooks/useNavigationRef'
+import { scale, verticalScale, moderateScale } from '~/utils/scaling'
 
 const Menu = ({}) => {
   // const [focus, setFocus] = useState<boolean>(false)
@@ -34,7 +35,12 @@ const Menu = ({}) => {
                     screen: item.link
                   })
                 }>
-                <Icon name={item.link} width={30} height={30} fill={'#fff'} />
+                <Icon
+                  name={item.link}
+                  width={verticalScale(35)}
+                  height={verticalScale(35)}
+                  fill={'#fff'}
+                />
               </MenuItem>
             </View>
           )

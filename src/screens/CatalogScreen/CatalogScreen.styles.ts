@@ -6,15 +6,16 @@ const styles = StyleSheet.create({
   flatlist: {
     paddingLeft: scale(11),
     paddingRight: scale(4),
-    paddingBottom: scale(11)
+    paddingBottom: scale(11),
+    justifyContent: 'flex-start'
   },
   card: {
     backgroundColor: Colors.menuBackground,
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
     marginRight: scale(7),
-    height: moderateScale(180),
+    height: moderateScale(200),
+    width: moderateScale(138),
     borderColor: 'transparent',
     borderWidth: 3,
     borderRadius: 8,
