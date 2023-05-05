@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, Image, ScrollView } from 'react-native'
 import { IProps } from './CardScreen.types'
 import styles from './CardScreen.styles'
 import { useMovieQuery } from '~/hooks/useMovieQuery'
 import { urlImagePath } from '~/utils/urlImagePath'
+import { useDispatch } from 'react-redux'
+import { addMovies } from '~/store/lastMovies/lastMoviesSlice'
+
 import {
   CardHeader,
   CardDescription,
@@ -13,6 +16,8 @@ import {
 } from '~/components'
 
 function CardScreen({ route }: any) {
+  // const dispatch = useDispatch()
+
   const { movie_id } = route.params
 
   const { data, isLoading, isSuccess, isError } = useMovieQuery({ movie_id })
@@ -31,8 +36,9 @@ function CardScreen({ route }: any) {
       </View>
     )
 
-  if (isSuccess) {
-  }
+  // useEffect(() => {
+  //   dispatch(addMovies({ movie: data }))
+  // }, [])
 
   const isOtherMovies =
     Array.isArray(data.other_movies) && data.other_movies.length > 0

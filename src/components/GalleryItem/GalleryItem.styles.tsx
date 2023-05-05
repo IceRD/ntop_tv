@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.focusBorderColor
   },
   image: {
-    width: moderateScale(118),
-    height: moderateScale(167)
+    width: moderateScale(123),
+    height: moderateScale(187)
   },
   textContainer: {
     backgroundColor: Colors.textBackground,

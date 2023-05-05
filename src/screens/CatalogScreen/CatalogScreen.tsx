@@ -59,8 +59,6 @@ function CatalogScreen({ route }: any) {
     setFocus(index)
   }
 
-  console.log({ catalog })
-
   function handleFetchNextPage() {
     if (hasNextPage) {
       setPage(prev => prev + 1)

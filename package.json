@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "android:dev": "react-native run-android --deviceId=emulator-5554 ",
-    "android:native": "react-native run-android --deviceId=85563ec5 ",
+    "android:dev": "react-native run-android --deviceId=emulator-5554",
+    "android:native": "react-native run-android --deviceId=85563ec5",
     "android:build": "cd android && gradlew assembleRelease & cd ..",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -15,6 +15,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-voice/voice": "^3.2.4",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@reduxjs/toolkit": "^1.9.3",

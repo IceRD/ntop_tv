@@ -9,8 +9,6 @@ const SIZE = 48
 
 export default {
   async get({ pageParam = 0, genre = null }: Payload) {
-    console.log('api', JSON.stringify({ pageParam, genre }, null, 2))
-
     pageParam = Number(pageParam)
 
     const params = {

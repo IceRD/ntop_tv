@@ -1,14 +1,16 @@
 import { StyleSheet } from 'react-native'
-import { Colors } from '~/theme'
+import { Colors, Size } from '~/theme'
 import { scale, verticalScale, moderateScale } from '~/utils/scaling'
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingVertical: scale(11),
-    paddingHorizontal: scale(11)
+    width: '100%',
+    marginTop: 20
   },
-  text: {
-    color: Colors.text
+  keyGroup: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center'
   }
 })
 

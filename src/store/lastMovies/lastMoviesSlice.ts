@@ -8,14 +8,22 @@ const getUniqueMovies = (movies, newMovie) => {
     return movies
   }
 
-  const array = [newMovie]
+  let nm = JSON.parse(JSON.stringify(newMovie))
+
+  delete nm.persones
+
+  const array = [nm]
 
   for (let i = 0, l = movies.length; i < l; i++) {
-    if (movies[i].movie_id === newMovie.movie_id) {
+    const movie = movies[i]
+
+    if (movie.movie_id === nm.movie_id) {
       continue
     }
 
-    array.push(movies[i])
+    delete movie.persones
+
+    array.push(movie)
 
     if (array.length >= MAX_MOVIES) {
       return array
@@ -33,7 +41,11 @@ const lastMoviesSlice = createSlice({
   reducers: {
     addMovies(state, { payload }: LastMoviesItem) {
       const { movie } = payload
-      state.movies = getUniqueMovies(state.movies, movie)
+
+      const m = getUniqueMovies(state.movies, movie)
+      console.log(JSON.stringify({ m }, null, 2))
+
+      state.movies = m
     }
   }
 })

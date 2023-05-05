@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   circle: {
     width: 50,
     height: 50,
-    marginTop: scale(7),
+    marginTop: scale(8),
     marginBottom: scale(6)
   },
   menuItem: {

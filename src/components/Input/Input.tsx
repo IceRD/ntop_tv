@@ -1,31 +1,29 @@
-import React, { useRef, useCallback } from 'react'
-import { TextInput, TouchableWithoutFeedback } from 'react-native'
+import React, { useState, useRef, useCallback } from 'react'
+import { TextInput, TouchableHighlight } from 'react-native'
 import styles from './Input.styles'
 import { Colors } from '~/theme'
 
 function Input(props) {
+  const [focus, setFocus] = useState<boolean>(false)
+
   function onFocus() {
-    touchableHighlightRef.current?.focus()
+    setFocus(true)
   }
 
-  const touchableHighlightRef = useRef(null)
-  const inputRef = useCallback(ref => {
-    if (ref) {
-      touchableHighlightRef.current = ref
-    }
-  }, [])
+  function onBlur() {
+    setFocus(false)
+  }
 
   return (
-    <TouchableWithoutFeedback onFocus={onFocus} accessible={true}>
-      <TextInput
-        {...props}
-        ref={inputRef}
-        style={styles.input}
-        placeholderTextColor={Colors.text}
-        cursorColor={Colors.main}
-        autoFocus={false}
-      />
-    </TouchableWithoutFeedback>
+    <TextInput
+      {...props}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      style={[styles.input, focus ? styles.focus : styles.blur]}
+      placeholderTextColor={Colors.text}
+      cursorColor={Colors.main}
+      autoFocus={false}
+    />
   )
 }
 

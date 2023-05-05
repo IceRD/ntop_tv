@@ -20,8 +20,6 @@ function CardBlockSingle({ items }) {
     return false
   }
 
-  console.log(JSON.stringify(obj, null, 2))
-
   return (
     <View>
       <View style={{ flexDirection: 'row' }}>

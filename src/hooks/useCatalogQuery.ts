@@ -16,8 +16,6 @@ export const useCatalogQuery = ({ genre }) => {
           const offset = Number(lastPage.offset)
           const pageParam = Number(lastPage.pageParam)
 
-          console.log(total, pagesize, offset)
-
           if (total > pagesize + offset && pagesize > 0) {
             return pageParam + 1
           }

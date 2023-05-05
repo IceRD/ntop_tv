@@ -7,7 +7,8 @@ enum Colors {
   overlayCard = 'rgba(51, 42, 80, 0.4)',
   textBackground = 'rgba(51, 42, 80, 0.95)',
   focusBorderColor = 'rgba(113, 74, 221, 1)',
-  rating = 'rgb(255,204,0)'
+  rating = 'rgb(255,204,0)',
+  button = '#808080'
 }
 
 export default Colors

@@ -4,7 +4,7 @@ import { scale, verticalScale, moderateScale } from '~/utils/scaling'
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: '#808080',
+    backgroundColor: Colors.button,
     height: moderateScale(19),
     width: moderateScale(19),
     borderRadius: Size.borderRadius

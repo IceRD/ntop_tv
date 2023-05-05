@@ -1,14 +1,20 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { ScrollView, View, Text, TouchableHighlight } from 'react-native'
 import styles from './SearchScreen.styles'
-import { Input } from '~/components'
+import { Input, Keypad } from '~/components'
 
 function SearchScreen() {
   return (
-    <View style={styles.wrapper}>
-      <Text style={styles.text}>SEARCH</Text>
-      {/* <Input placeholder="Поиск ..." inputMode="text" selectTextOnFocus /> */}
-    </View>
+    <ScrollView style={styles.wrapper}>
+      <Input
+        placeholder="Поиск ..."
+        inputMode="text"
+        selectTextOnFocus={false}
+        editable={false}
+      />
+
+      {/* <Keypad /> */}
+    </ScrollView>
   )
 }
 
