@@ -32,8 +32,6 @@ export default {
 
       return []
     } catch (error) {
-      console.log({ error })
-
       if (axios.isAxiosError(error)) {
         return error.message
       }

@@ -38,14 +38,8 @@ function CatalogScreen({ route }: any) {
 
   const [focus, setFocus] = useState<number>(0)
   const [pageParam, setPage] = useState<number>(0)
-  // const [genre, setGenre] = useState<number>(0)
 
   const genre = route?.params?.genre || 0
-
-  // useEffect(() => {
-  //   setPage(0)
-  //   setGenre(paramsGenre)
-  // }, [paramsGenre])
 
   const query = {
     genre,

@@ -297,10 +297,11 @@ dependencies {
 
     // react-native-video
     implementation project(':react-native-video')
-    implementation "androidx.appcompat:appcompat:1.0.0"
 
     // @react-native-voice/voice
     implementation project(':@react-native-voice_voice')
+    
+    implementation "androidx.appcompat:appcompat:1.0.0"
 }
 
 if (isNewArchitectureEnabled()) {

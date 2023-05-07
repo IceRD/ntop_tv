@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import focusReducer from './focusSlice/focusSlice'
 import lastMoviesReducer from './lastMovies/lastMoviesSlice'
+import searchReducer from './search/searchSlice'
 
 export const store = configureStore({
   reducer: {
     focus: focusReducer,
-    lastMovies: lastMoviesReducer
+    lastMovies: lastMoviesReducer,
+    search: searchReducer
   }
 })
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import { useNewMoviesQuery } from '~/hooks/useNewMoviesQuery'
-import { Gallery, GalleryItem } from '~/components'
+import { Gallery } from '~/components'
 import styles from './NewMovieScreen.styles'
 
 function NewMovieScreen() {

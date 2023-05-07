@@ -2,6 +2,8 @@
   package="com.ntop_tv">
 
   <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
   <!--
       android:icon is used to display launcher icon on mobile devices.

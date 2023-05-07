@@ -39,9 +39,12 @@ function CardBlockSingle({ items }) {
       </Text>
 
       {obj[tab].items.map((item, index) => {
+        console.log(item)
+
         return (
           <CardBlockSinglItem
             item={item}
+            key={index}
             hasTVPreferredFocus={undefined}
             blockFocusRight={false}
           />

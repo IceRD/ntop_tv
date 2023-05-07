@@ -1,14 +1,14 @@
 import axios from '~/api/axios'
 
-interface Request {
+interface Payload {
   query: string
 }
 
 export default {
-  async get({ query }: Request) {
+  async get({ query }: Payload) {
     const params = {
       'action[0]': 'Video.search',
-      'query[0]': query
+      'query[0]': escape(query)
     }
 
     try {
@@ -20,7 +20,7 @@ export default {
       const data = await response.data
 
       if (data?.js[0]?.response?.movies) {
-        return data.js[0].response
+        return data.js[0].response.movies
       }
 
       return []
