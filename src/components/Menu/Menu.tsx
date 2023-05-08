@@ -20,31 +20,33 @@ const Menu = ({}) => {
   return (
     <View style={[styles.wrapper, isFocusMenu ? styles.wrapperFocused : null]}>
       <ScrollView>
-        <View style={styles.menuItem}>
-          <Image
-            style={styles.circle}
-            source={require('assets/images/logo.png')}
-          />
+        <View>
+          <View style={styles.menuItem}>
+            <Image
+              style={styles.circle}
+              source={require('assets/images/logo.png')}
+            />
+          </View>
+          {MENU.map((item, key) => {
+            return (
+              <View style={styles.menuItem} key={key}>
+                <MenuItem
+                  onPress={() =>
+                    navigationRef.navigate(StackName.root, {
+                      screen: item.link
+                    })
+                  }>
+                  <Icon
+                    name={item.link}
+                    width={verticalScale(35)}
+                    height={verticalScale(35)}
+                    fill={'#fff'}
+                  />
+                </MenuItem>
+              </View>
+            )
+          })}
         </View>
-        {MENU.map((item, key) => {
-          return (
-            <View style={styles.menuItem} key={key}>
-              <MenuItem
-                onPress={() =>
-                  navigationRef.navigate(StackName.root, {
-                    screen: item.link
-                  })
-                }>
-                <Icon
-                  name={item.link}
-                  width={verticalScale(35)}
-                  height={verticalScale(35)}
-                  fill={'#fff'}
-                />
-              </MenuItem>
-            </View>
-          )
-        })}
       </ScrollView>
     </View>
   )

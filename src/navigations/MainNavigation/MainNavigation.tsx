@@ -59,6 +59,11 @@ const ScreenWithLayoutNavigation = function () {
           component={ROUTE_COMPONENTS.search.component}
           options={stackScreenOptions}
         />
+        <StackLayout.Screen
+          name={ROUTE_COMPONENTS.viewed.name}
+          component={ROUTE_COMPONENTS.viewed.component}
+          options={stackScreenOptions}
+        />
 
         <StackLayout.Screen
           name={ROUTE_COMPONENTS.card.name}

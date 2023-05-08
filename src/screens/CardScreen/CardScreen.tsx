@@ -6,6 +6,7 @@ import { useMovieQuery } from '~/hooks/useMovieQuery'
 import { urlImagePath } from '~/utils/urlImagePath'
 import { useDispatch } from 'react-redux'
 import rating from '~/utils/rating'
+import { setViewedData } from '~/store/viewed/viewedSlice'
 
 import {
   CardHeader,
@@ -16,11 +17,17 @@ import {
 } from '~/components'
 
 function CardScreen({ route }: any) {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const { movie_id } = route.params
 
   const { data, isLoading, isSuccess, isError } = useMovieQuery({ movie_id })
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setViewedData({ movie: data }))
+    }
+  }, [data])
 
   if (isLoading)
     return (
@@ -35,10 +42,6 @@ function CardScreen({ route }: any) {
         <Text>Oops, something went wrong ...</Text>
       </View>
     )
-
-  // useEffect(() => {
-  //   dispatch(addMovies({ movie: data }))
-  // }, [])
 
   const isOtherMovies =
     Array.isArray(data.other_movies) && data.other_movies.length > 0

@@ -5,8 +5,8 @@ enum MenuTitle {
   catalog = 'Каталог фильмов',
   categories = 'Категории',
   topmovie = 'Топ недели',
-  newmovie = 'Новинки'
-  // viewed = 'Просмотренные',
+  newmovie = 'Новинки',
+  viewed = 'Просмотренные'
   // favorites = 'Избранное'
 }
 
@@ -30,6 +30,10 @@ const MENU = [
   {
     title: MenuTitle.topmovie,
     link: Routes.topmovie
+  },
+  {
+    title: MenuTitle.viewed,
+    link: Routes.viewed
   }
 ]
 

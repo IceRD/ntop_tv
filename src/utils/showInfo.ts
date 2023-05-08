@@ -1,8 +1,8 @@
 export default function showInfo(item: {
-  year: string | undefined
-  countries: string[] | undefined
-  quality: string | undefined
-  hd: string | undefined
+  year?: string | undefined
+  countries?: string[] | undefined
+  quality?: string | undefined
+  hd?: string | undefined
 }) {
   console.log({ item })
 

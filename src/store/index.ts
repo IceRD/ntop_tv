@@ -13,23 +13,23 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import searchReducer from './search/searchSlice'
+import viewedReducer from './viewed/viewedSlice'
 import focusReducer from './focusSlice/focusSlice'
-import lastMoviesReducer from './lastMovies/lastMoviesSlice'
 
-if (isDevelopment) {
-  // AsyncStorage.clear()
-}
+// if (isDevelopment) {
+//   AsyncStorage.clear()
+// }
 
 const rootReducer = combineReducers({
   search: searchReducer,
-  focus: focusReducer,
-  lastMovies: lastMoviesReducer
+  viewed: viewedReducer,
+  focus: focusReducer
 })
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['search']
+  whitelist: ['search', 'viewed']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

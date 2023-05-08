@@ -1,21 +1,24 @@
 import now from './now'
 
-export default function throttle(func, wait, options) {
-  var timeout, context, args, result
-  var previous = 0
+export default function throttle(func: Function, wait: number, options: any) {
+  let timeout: number | null
+  let context: any
+  let args: any
+  let result: any
+  let previous = 0
   if (!options) options = {}
 
-  var later = function () {
+  let later = function () {
     previous = options.leading === false ? 0 : now()
     timeout = null
     result = func.apply(context, args)
     if (!timeout) context = args = null
   }
 
-  var throttled = function () {
-    var _now = now()
+  let throttled = function () {
+    let _now = now()
     if (!previous && options.leading === false) previous = _now
-    var remaining = wait - (_now - previous)
+    let remaining = wait - (_now - previous)
     context = this
     args = arguments
     if (remaining <= 0 || remaining > wait) {

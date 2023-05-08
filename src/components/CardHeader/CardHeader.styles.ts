@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   titleContainer_description: {
     color: Colors.main,
     fontWeight: 'bold',
-    fontSize: moderateScale(6)
+    fontSize: moderateScale(7)
   },
   ratingContainer: {
     flexDirection: 'row',

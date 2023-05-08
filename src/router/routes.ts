@@ -7,8 +7,8 @@ import {
   VideoPlayerScreen,
   SearchScreen,
   CardScreen,
-  CategoriesScreen
-  // ViewedScreen,
+  CategoriesScreen,
+  ViewedScreen
   // FavoritesScreen,
   // AuthenticationScreen,
   // SettingsScreen,
@@ -44,6 +44,10 @@ const ROUTE_COMPONENTS = {
   videoplayer: {
     name: Routes.videoplayer,
     component: VideoPlayerScreen
+  },
+  viewed: {
+    name: Routes.viewed,
+    component: ViewedScreen
   }
 }
 

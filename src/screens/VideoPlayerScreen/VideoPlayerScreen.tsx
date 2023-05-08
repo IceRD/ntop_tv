@@ -8,7 +8,7 @@ import { SyntheticEvent } from '~/types/event'
 // import throttle from '~/utils/throttle'
 
 function VideoPlayerScreen({ route }: IProps) {
-  const { uri, id } = route.params
+  let { uri, id } = route.params
 
   const [error, setError] = useState<null | string>(null)
   const [currentTime, setCurrentTime] = useState(0)
@@ -16,12 +16,6 @@ function VideoPlayerScreen({ route }: IProps) {
   const [paused, setPaused] = useState(false)
 
   const playerRef = useRef(null)
-
-  useEffect(() => {
-    useTVEventHandler(tvEventListener)
-
-    return () => useTVEventHandler(null)
-  }, [])
 
   function tvEventListener(event: any): void {
     console.log(event.eventType)
@@ -38,23 +32,7 @@ function VideoPlayerScreen({ route }: IProps) {
       case 'longLeft':
         onSeek(-60)
         break
-      // case 'select':
-      //   onPaused()
-      //   break
     }
-  }
-
-  function onError(e: SyntheticEvent) {
-    if (e.hasOwnProperty('error')) {
-      const err = JSON.stringify(e.error)
-      setError(err)
-    }
-  }
-
-  function onProgress(data) {
-    // throttle(saveCurrentTime, 60000)
-
-    setCurrentTime(data.currentTime)
   }
 
   // async function saveCurrentTime() {
@@ -67,8 +45,19 @@ function VideoPlayerScreen({ route }: IProps) {
   //   }
   // }
 
-  function onPaused() {
-    setPaused(nextValue => (nextValue = !nextValue))
+  // function onPaused() {
+  //   setPaused(nextValue => (nextValue = !nextValue))
+  // }
+
+  function onError(e: SyntheticEvent) {
+    if (e.hasOwnProperty('error')) {
+      const err = JSON.stringify(e.error)
+      setError(err)
+    }
+  }
+
+  function onProgress(data) {
+    setCurrentTime(data.currentTime)
   }
 
   function onSeek(seek) {
@@ -80,7 +69,7 @@ function VideoPlayerScreen({ route }: IProps) {
     playerRef.current.seek(updateTime)
   }
 
-  function onLoad(data) {
+  function onLoad(data: { duration: number }) {
     setDuration(Math.round(data.duration))
   }
 
@@ -97,7 +86,7 @@ function VideoPlayerScreen({ route }: IProps) {
       source={{
         uri
       }}
-      ref={ref => (playerRef.current = ref)}
+      ref={(ref: any) => (playerRef.current = ref)}
       style={styles.wrapper}
       autoplay={true}
       controls={true}

@@ -12,11 +12,11 @@ const searchSlice = createSlice({
     errors: false
   },
   reducers: {
-    setData(state, { payload }) {
+    setSearchData(state, { payload }) {
       const { data } = payload
       state.data = data
     },
-    clearData(state) {
+    clearSearchData(state) {
       state.data = []
     },
     setQuery(state, { payload }) {
@@ -29,27 +29,28 @@ const searchSlice = createSlice({
     }
   },
   extraReducers: builder => {
-    builder
-      .addCase(fetchSearch.pending, state => {
-        state.isLoading = true
-        state.isSuccess = false
-        state.errors = false
-      })
-      .addCase(fetchSearch.fulfilled, (state, { payload }) => {
-        state.isLoading = false
-        state.isSuccess = true
-        state.errors = false
-        state.data = payload
-      })
-      .addCase(fetchSearch.rejected, (state, { payload }) => {
-        state.isLoading = false
-        state.isSuccess = false
-        state.errors = true
-      })
+    builder.addCase(fetchSearch.pending, state => {
+      state.isLoading = true
+      state.isSuccess = false
+      state.errors = false
+    })
+
+    builder.addCase(fetchSearch.fulfilled, (state, { payload }) => {
+      state.isLoading = false
+      state.isSuccess = true
+      state.errors = false
+      state.data = payload
+    })
+
+    builder.addCase(fetchSearch.rejected, (state, { payload }) => {
+      state.isLoading = false
+      state.isSuccess = false
+      state.errors = true
+    })
   }
 })
 
-export const { setData, clearData, setQuery, setVariantListy } =
+export const { setSearchData, clearSearchData, setQuery, setVariantListy } =
   searchSlice.actions
 
 export default searchSlice.reducer

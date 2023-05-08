@@ -5,11 +5,10 @@ import toDecimal from '~/utils/toDecimal'
 import Icons from '~/components/Icons'
 import Colors from '~/theme/Colors'
 import { IProps } from './CardHeader.types'
+import showInfo from '~/utils/showInfo'
 
 function CardHeader({ name, year, rating, countries, quality }: IProps) {
-  const description = [year, countries.join(','), quality]
-    .filter(Boolean)
-    .join(' | ')
+  const description = showInfo({ year, countries, quality })
 
   return (
     <View style={styles.header}>
