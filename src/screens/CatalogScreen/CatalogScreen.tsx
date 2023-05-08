@@ -15,23 +15,7 @@ import { urlImagePath } from '~/utils/urlImagePath'
 import { StackName } from '~/navigations/Navigation.types'
 import { Routes } from '~/router/routes.types'
 import { useNavigationRef } from '~/hooks/useNavigationRef'
-
-function showInfo(item: { year: any; countries: any[]; quality: any }) {
-  const arr = []
-  if (item.year !== undefined) {
-    arr.push(item.year)
-  }
-
-  if (Array.isArray(item.countries) && item.countries.length > 0) {
-    arr.push(item.countries.join(','))
-  }
-
-  if (item.quality !== undefined) {
-    arr.push(item.quality)
-  }
-
-  return arr.join(' | ')
-}
+import showInfo from '~/utils/showInfo'
 
 function CatalogScreen({ route }: any) {
   const { navigationRef } = useNavigationRef()
@@ -78,7 +62,7 @@ function CatalogScreen({ route }: any) {
     <>
       <FlatList
         columnWrapperStyle={styles.flatlist}
-        numColumns={3}
+        numColumns={4}
         data={catalog}
         keyExtractor={item => item.movie_id}
         onEndReached={handleFetchNextPage}

@@ -18,17 +18,14 @@ const styles = StyleSheet.create({
   },
   microphoneFocused: {
     // borderColor: Colors.focusBorderColor,
-    // backgroundColor: Colors.focusBorderColor
+    backgroundColor: Colors.button,
     borderColor: Colors.focusBorderColor
   },
   microphoneActive: {
-    backgroundColor: Colors.focusBorderColor
+    backgroundColor: Colors.focusBorderColor,
+    borderColor: Colors.focusBorderColor
   },
-  microphoneContainer: {
-    // padding: scale(4),
-    // borderColor: Colors.focusBorderColor,
-    // backgroundColor: Colors.focusBorderColor
-  }
+  microphoneContainer: {}
 })
 
 export default styles

@@ -60,6 +60,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  centeredText: {
+    color: Colors.text,
+    fontWeight: 'bold'
   }
 })
 

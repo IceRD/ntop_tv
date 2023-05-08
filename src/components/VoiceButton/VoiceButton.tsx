@@ -11,6 +11,8 @@ import { IProps } from './VoiceButton.types'
 import { Colors } from '~/theme'
 import Icon from '~/components/Icons'
 import { verticalScale } from '~/utils/scaling'
+import { useDispatch } from 'react-redux'
+import { setQuery, setVariantListy } from '~/store/search/searchSlice'
 
 import Voice, {
   SpeechRecognizedEvent,
@@ -18,9 +20,11 @@ import Voice, {
   SpeechErrorEvent
 } from '@react-native-voice/voice'
 
-function VoiceButton({ onSearch }: IProps) {
+function VoiceButton() {
   const [focus, setFocus] = useState(false)
   const [isVoice, setIsVoice] = useState(false)
+
+  const dispatch = useDispatch()
 
   useEffect((): any => {
     Voice.onSpeechStart = onSpeechStart
@@ -57,10 +61,15 @@ function VoiceButton({ onSearch }: IProps) {
 
   function onSpeechResults(e: SpeechResultsEvent) {
     console.log('onSpeechResults: ', e)
+    const arr = e?.value
 
-    console.log(e?.value)
-    onSearch(e?.value)
+    if (arr?.length !== 0) {
+      dispatch(setVariantListy({ variantList: arr }))
+      dispatch(setQuery({ query: arr[0] }))
+    }
   }
+
+  function onSearch(arr: string[]): void {}
 
   function onSpeechRecognized(e: SpeechRecognizedEvent) {
     console.log('onSpeechRecognized: ', e)
@@ -80,13 +89,13 @@ function VoiceButton({ onSearch }: IProps) {
       <TouchableHighlight
         onFocus={onFocus}
         onBlur={onBlur}
-        onPressIn={onSpeechStart}
         style={[
           styles.microphone,
           focus ? styles.microphoneFocused : null,
-          isVoice && styles.microphoneActive
+          isVoice ? styles.microphoneActive : null
         ]}
-        underlayColor={Colors.mainBackground}
+        underlayColor={'transparent'}
+        // onPressIn={onSpeechStart}
         onPress={onStartButtonPress}>
         <View style={styles.microphoneContainer}>
           <Icon

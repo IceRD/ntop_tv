@@ -5,7 +5,7 @@ import styles from './CardScreen.styles'
 import { useMovieQuery } from '~/hooks/useMovieQuery'
 import { urlImagePath } from '~/utils/urlImagePath'
 import { useDispatch } from 'react-redux'
-import { addMovies } from '~/store/lastMovies/lastMoviesSlice'
+// import { addMovies } from '~/store/lastMovies/lastMoviesSlice'
 
 import {
   CardHeader,

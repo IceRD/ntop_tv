@@ -47,7 +47,8 @@ function CardBlockSeriesListItem({
       }
       onPress={() => {
         navigationRef.navigate(StackName.videoplayer, {
-          uri: item.links.download
+          uri: item.links.download,
+          id: item.file_id
         })
       }}>
       <View>

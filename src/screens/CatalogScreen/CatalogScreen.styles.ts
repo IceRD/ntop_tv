@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: scale(7),
-    height: scale(135),
-    width: scale(94),
+    height: scale(102.35), // 135
+    width: scale(69), // 94
     borderColor: 'transparent',
     borderWidth: 3,
     borderRadius: 8,

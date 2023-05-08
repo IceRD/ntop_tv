@@ -16,6 +16,11 @@ const styles = StyleSheet.create({
   },
   error: {
     color: '#ffffff'
+  },
+  mediaControls: {
+    height: '100%',
+    flex: 1,
+    alignSelf: 'center'
   }
 })
 

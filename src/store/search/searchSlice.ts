@@ -6,6 +6,7 @@ const searchSlice = createSlice({
   initialState: {
     data: [],
     query: '',
+    variantList: [],
     isLoading: false,
     isSuccess: false,
     errors: false
@@ -17,6 +18,14 @@ const searchSlice = createSlice({
     },
     clearData(state) {
       state.data = []
+    },
+    setQuery(state, { payload }) {
+      const { query } = payload
+      state.query = query
+    },
+    setVariantListy(state, { payload }) {
+      const { variantList } = payload
+      state.variantList = variantList
     }
   },
   extraReducers: builder => {
@@ -40,6 +49,7 @@ const searchSlice = createSlice({
   }
 })
 
-export const { setData, clearData } = searchSlice.actions
+export const { setData, clearData, setQuery, setVariantListy } =
+  searchSlice.actions
 
 export default searchSlice.reducer

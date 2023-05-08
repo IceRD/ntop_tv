@@ -1,21 +1,40 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react'
-import { ScrollView, View, Text, TouchableHighlight } from 'react-native'
+import React from 'react'
+import { ScrollView, View } from 'react-native'
 import styles from './SearchHeader.styles'
-import { Colors } from '~/theme'
 import { Input, VoiceButton, SearchItem } from '~/components'
 import { IProps } from './SearchHeader.types'
+import { useSelector, useDispatch } from 'react-redux'
+import { setQuery } from '~/store/search/searchSlice'
 
-function SearchHeader({
-  style,
-  inputValue,
-  onUpdateValue,
-  onSearch,
-  searchVarianList
-}: IProps) {
+function SearchHeader({ style }: IProps) {
+  const dispatch = useDispatch()
+  const { query, variantList } = useSelector(state => state.search)
+
+  function SearchItems({ list }) {
+    if (!Array.isArray(list) || list.length === 0) {
+      return null
+    }
+
+    return (
+      <View style={{ marginTop: 24 }}>
+        <ScrollView contentInsetAdjustmentBehavior="automatic" horizontal>
+          {list.map((value, index) => (
+            <View key={index}>
+              <SearchItem
+                value={value}
+                onPress={() => dispatch(setQuery({ query: value }))}
+              />
+            </View>
+          ))}
+        </ScrollView>
+      </View>
+    )
+  }
+
   return (
     <View style={style}>
       <View style={styles.findContainer}>
-        <VoiceButton onSearch={onSearch} />
+        <VoiceButton />
 
         <Input
           style={styles.search}
@@ -23,19 +42,11 @@ function SearchHeader({
           inputMode="text"
           selectTextOnFocus={false}
           editable={false}
-          value={inputValue}
+          value={query}
         />
       </View>
 
-      <View style={{ marginTop: 24 }}>
-        <ScrollView contentInsetAdjustmentBehavior="automatic" horizontal>
-          {searchVarianList.map((value, index) => (
-            <View key={index}>
-              <SearchItem value={value} onPress={onUpdateValue} />
-            </View>
-          ))}
-        </ScrollView>
-      </View>
+      <SearchItems list={variantList} />
     </View>
   )
 }

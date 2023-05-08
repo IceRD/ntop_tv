@@ -1,25 +1,29 @@
 import React from 'react'
-import { StatusBar, SafeAreaView } from 'react-native'
+import { StatusBar, SafeAreaView, LogBox } from 'react-native'
 import { useNavigationContainerRef } from '@react-navigation/native'
 import NavigationContext from '~/context/navigation'
 import MainNavigation from '~/navigations/MainNavigation'
 import { Provider as ReduxProvider } from 'react-redux'
-import { store } from '~/store'
+import store, { persistor } from '~/store'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-
-const queryClient = new QueryClient()
+import { PersistGate } from 'redux-persist/integration/react'
 
 const App = () => {
   const navigationRef = useNavigationContainerRef()
+  const queryClient = new QueryClient()
+
+  LogBox.ignoreLogs(['new NativeEventEmitter'])
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="dark-content" hidden={true} />
       <QueryClientProvider client={queryClient}>
         <ReduxProvider store={store}>
-          <NavigationContext.Provider value={{ navigationRef }}>
-            <MainNavigation />
-          </NavigationContext.Provider>
+          <PersistGate loading={null} persistor={persistor}>
+            <NavigationContext.Provider value={{ navigationRef }}>
+              <MainNavigation />
+            </NavigationContext.Provider>
+          </PersistGate>
         </ReduxProvider>
       </QueryClientProvider>
     </SafeAreaView>

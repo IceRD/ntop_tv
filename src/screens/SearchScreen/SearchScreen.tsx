@@ -15,46 +15,34 @@ import { StackName } from '~/navigations/Navigation.types'
 import { Routes } from '~/router/routes.types'
 import { useNavigationRef } from '~/hooks/useNavigationRef'
 import { SearchHeader } from '~/components'
+import showInfo from '~/utils/showInfo'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchSearch } from '~/store/search/searchReducers'
 import { searchData } from '~/store/search/searchSelectors'
 
-function showInfo(item: any) {
-  const arr = []
-  if (item.year !== undefined) {
-    arr.push(item.year)
-  }
-
-  if (Array.isArray(item.countries) && item.countries.length > 0) {
-    arr.push(item.countries.join(','))
-  }
-
-  if (item.quality !== undefined) {
-    arr.push(item.quality)
-  }
-
-  return arr.join(' | ')
-}
-
 function SearchScreen() {
   const { navigationRef } = useNavigationRef()
   const dispatch = useDispatch()
 
-  const { isLoading, isSuccess, errors } = useSelector(state => state.search)
+  const { isLoading, isSuccess, errors, query, variantList } = useSelector(
+    state => state.search
+  )
   const data = useSelector(searchData)
 
   const [focus, setFocus] = useState<number | null>(null)
-  const [searchVarianList, setSearchVariantList] = useState([])
-  const [value, setValue] = useState('')
+  // const [searchVarianList, setSearchVariantList] = useState([])
+  // const [value, setValue] = useState('')
 
   useEffect(() => {
     console.log('rerender')
 
-    if (value === '') return
+    if (query === '') return
 
-    dispatch(fetchSearch({ query: value }))
-  }, [value])
+    console.log({ query })
+
+    dispatch(fetchSearch({ query }))
+  }, [query])
 
   function onFocus(index: number) {
     setFocus(index)
@@ -62,15 +50,6 @@ function SearchScreen() {
 
   function onBlur() {
     setFocus(null)
-  }
-
-  function onUpdateValue(str: string) {
-    setValue(prev => (prev = str))
-  }
-
-  function onSearch(arr: string[]): void {
-    setSearchVariantList(prev => (prev = arr))
-    setValue(prev => (prev = arr.length === 0 ? '' : arr[0]))
   }
 
   return (
@@ -110,7 +89,7 @@ function SearchScreen() {
           if (isLoading) {
             return (
               <View style={styles.centered}>
-                <Text>Loading ...</Text>
+                <Text style={styles.centeredText}> Загружается ...</Text>
               </View>
             )
           }
@@ -118,34 +97,26 @@ function SearchScreen() {
           if (errors) {
             return (
               <View style={styles.centered}>
-                <Text>Oops, something went wrong ...</Text>
+                <Text style={styles.centeredText}>Упс. Произошла ошибка.</Text>
               </View>
             )
           }
 
-          if (isSuccess) {
+          if (isLoading) {
             return (
               <View style={styles.centered}>
-                <Text>Ничего не найдено. ...</Text>
+                <Text style={styles.centeredText}>Ничего не найдено.</Text>
               </View>
             )
           }
 
-          return <View />
+          return null
         }}
         ListFooterComponent={() => {
           return <View style={styles.hf} />
         }}
         ListHeaderComponent={() => {
-          return (
-            <SearchHeader
-              style={styles.header}
-              inputValue={value}
-              onUpdateValue={onUpdateValue}
-              searchVarianList={searchVarianList}
-              onSearch={onSearch}
-            />
-          )
+          return <SearchHeader style={styles.header} />
         }}
       />
     </>

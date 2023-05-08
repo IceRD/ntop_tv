@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
   microphoneContainer: {},
   search: {
     flex: 1,
-    borderColor: Colors.button
+    borderColor: Colors.mainBackground,
+    backgroundColor: Colors.mainBackground
   }
 })
 
