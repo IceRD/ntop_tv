@@ -5,7 +5,7 @@ import styles from './CardScreen.styles'
 import { useMovieQuery } from '~/hooks/useMovieQuery'
 import { urlImagePath } from '~/utils/urlImagePath'
 import { useDispatch } from 'react-redux'
-// import { addMovies } from '~/store/lastMovies/lastMoviesSlice'
+import rating from '~/utils/rating'
 
 import {
   CardHeader,
@@ -59,8 +59,7 @@ function CardScreen({ route }: any) {
               name={data.name}
               year={data.year}
               countries={data.countries}
-              rating_kinopoisk={data.rating_kinopoisk_value}
-              rating_imdb={data.rating_imdb_value}
+              rating={rating(data)}
               quality={data.quality}
             />
             <CardDescription text={data.description} />

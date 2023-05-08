@@ -21,13 +21,9 @@ export default function showInfo(item: {
 
   if (item.quality !== undefined && item.quality !== '') {
     arr.push(item.quality)
-  }
-
-  if (item.hd !== undefined && Number(item.hd) >= 1) {
+  } else if (item.hd !== undefined && Number(item.hd) >= 1) {
     arr.push('HD')
   }
-
-  console.log(arr)
 
   return arr.join(' | ')
 }

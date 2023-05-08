@@ -6,14 +6,7 @@ import Icons from '~/components/Icons'
 import Colors from '~/theme/Colors'
 import { IProps } from './CardHeader.types'
 
-function CardHeader({
-  name,
-  year,
-  rating_imdb = 0,
-  rating_kinopoisk = 0,
-  countries,
-  quality
-}: IProps) {
+function CardHeader({ name, year, rating, countries, quality }: IProps) {
   const description = [year, countries.join(','), quality]
     .filter(Boolean)
     .join(' | ')
@@ -34,7 +27,7 @@ function CardHeader({
       </View>
       <View style={styles.ratingContainer}>
         <Text accessible={false} style={styles.rating}>
-          {toDecimal(rating_kinopoisk)}
+          {toDecimal(rating)}
         </Text>
         <Icons name={'Rating'} width={18} height={18} fill={Colors.rating} />
       </View>
