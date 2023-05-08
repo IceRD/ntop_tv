@@ -35,11 +35,7 @@ function SearchScreen() {
   // const [value, setValue] = useState('')
 
   useEffect(() => {
-    console.log('rerender')
-
     if (query === '') return
-
-    console.log({ query })
 
     dispatch(fetchSearch({ query }))
   }, [query])

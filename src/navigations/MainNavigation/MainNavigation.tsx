@@ -91,7 +91,6 @@ const MainNavigation = function () {
           name={ROUTE_COMPONENTS.videoplayer.name}
           component={ROUTE_COMPONENTS.videoplayer.component}
           options={stackScreenOptions}
-          onFocus={() => console.log('onFocus screen')}
         />
       </RootStack.Navigator>
     </NavigationContainer>

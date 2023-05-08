@@ -45,22 +45,26 @@ function VoiceButton() {
     setFocus(false)
   }, [])
 
-  function onStartButtonPress(e: any) {
-    Voice.start('ru-RU')
-    setIsVoice(true)
+  async function onStartButtonPress() {
+    try {
+      await Voice.start('ru-RU')
+      setIsVoice(true)
+    } catch (e) {
+      // console.log(e)
+    }
   }
 
   function onSpeechStart(e: any) {
-    console.log('onSpeechStart: ', e)
+    // console.log('onSpeechStart: ', e)
   }
 
   function onSpeechEnd(e: any) {
-    console.log('onSpeechEnd: ', e)
+    // console.log('onSpeechEnd: ', e)
     setIsVoice(false)
   }
 
   function onSpeechResults(e: SpeechResultsEvent) {
-    console.log('onSpeechResults: ', e)
+    // console.log('onSpeechResults: ', e)
     const arr = e?.value
 
     if (arr?.length !== 0) {
@@ -69,19 +73,17 @@ function VoiceButton() {
     }
   }
 
-  function onSearch(arr: string[]): void {}
-
   function onSpeechRecognized(e: SpeechRecognizedEvent) {
-    console.log('onSpeechRecognized: ', e)
+    // console.log('onSpeechRecognized: ', e)
   }
 
   function onSpeechError(e: SpeechErrorEvent) {
-    console.log('onSpeechError: ', e)
+    // console.log('onSpeechError: ', e)
     setIsVoice(false)
   }
 
   function onSpeechPartialResults(e: SpeechResultsEvent) {
-    console.log('onSpeechPartialResults: ', e)
+    // console.log('onSpeechPartialResults: ', e)
   }
 
   return (
@@ -95,7 +97,6 @@ function VoiceButton() {
           isVoice ? styles.microphoneActive : null
         ]}
         underlayColor={'transparent'}
-        // onPressIn={onSpeechStart}
         onPress={onStartButtonPress}>
         <View style={styles.microphoneContainer}>
           <Icon

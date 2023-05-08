@@ -18,7 +18,6 @@ function VideoPlayerScreen({ route }: IProps) {
   const playerRef = useRef(null)
 
   function tvEventListener(event: any): void {
-    console.log(event.eventType)
     switch (event.eventType) {
       case 'right':
         onSeek(30)
@@ -63,7 +62,7 @@ function VideoPlayerScreen({ route }: IProps) {
   function onSeek(seek) {
     let nextValue = currentTime + seek
     let updateTime = Math.max(0, Math.min(nextValue, duration))
-    console.log(updateTime)
+    x
 
     setCurrentTime(updateTime)
     playerRef.current.seek(updateTime)

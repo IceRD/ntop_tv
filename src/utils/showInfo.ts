@@ -4,8 +4,6 @@ export default function showInfo(item: {
   quality?: string | undefined
   hd?: string | undefined
 }) {
-  console.log({ item })
-
   const arr = []
   if (item.year !== null) {
     arr.push(item.year)

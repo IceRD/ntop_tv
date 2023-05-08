@@ -6,22 +6,24 @@ const MAX_VIEWED = 48
 const viewedSlice = createSlice({
   name: 'viewed',
   initialState: {
-    data: <ICard[]>[]
+    viewedData: <ICard[]>[]
   },
   reducers: {
     setViewedData(state, { payload }) {
       const { movie } = payload
-
       let newData = [movie]
 
-      for (let i = 0; i < state.data.length; i++) {
-        if (state.data[i].movie_id === movie.movie_id) {
+      for (let i = 0; i < state.viewedData.length; i++) {
+        if (
+          state.viewedData[i].movie_id === movie.movie_id ||
+          i >= MAX_VIEWED
+        ) {
           continue
         }
-        newData.push(state.data[i])
+        newData.push(state.viewedData[i])
       }
 
-      state.data = newData.slice(0, MAX_VIEWED)
+      state.viewedData = newData
     }
   }
 })

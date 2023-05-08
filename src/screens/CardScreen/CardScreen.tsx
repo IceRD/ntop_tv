@@ -25,6 +25,7 @@ function CardScreen({ route }: any) {
 
   useEffect(() => {
     if (data) {
+      console.log('rerender')
       dispatch(setViewedData({ movie: data }))
     }
   }, [data])
