@@ -22,6 +22,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: scale(6),
     position: 'relative'
+  },
+  versionContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%'
+  },
+  version: {
+    color: Colors.text
   }
 })
 

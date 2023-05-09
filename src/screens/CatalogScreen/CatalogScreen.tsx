@@ -6,7 +6,8 @@ import {
   FlatList,
   TouchableHighlight,
   ImageBackground,
-  SectionList
+  SectionList,
+  Platform
 } from 'react-native'
 import { IProps } from './CatalogScreen.types'
 import { useCatalogQuery } from '~/hooks/useCatalogQuery'
@@ -19,6 +20,8 @@ import showInfo from '~/utils/showInfo'
 
 function CatalogScreen({ route }: any) {
   const { navigationRef } = useNavigationRef()
+
+  const columns = Platform.isTV ? 4 : 3
 
   const [focus, setFocus] = useState<number>(0)
   const [pageParam, setPage] = useState<number>(0)
@@ -62,7 +65,7 @@ function CatalogScreen({ route }: any) {
     <>
       <FlatList
         columnWrapperStyle={styles.flatlist}
-        numColumns={4}
+        numColumns={columns}
         data={catalog}
         keyExtractor={item => item.movie_id}
         onEndReached={handleFetchNextPage}
@@ -71,7 +74,11 @@ function CatalogScreen({ route }: any) {
           return (
             <TouchableHighlight
               onFocus={() => onFocus(index)}
-              style={[styles.card, focus === index && styles.focused]}
+              style={[
+                styles.card,
+                Platform.isTV ? styles.cardSizeTV : styles.cardSize,
+                focus === index && styles.focused
+              ]}
               key={item.key}
               onPress={() => {
                 navigationRef.navigate(StackName.root, {

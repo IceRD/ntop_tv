@@ -5,7 +5,8 @@ import {
   View,
   Image,
   TouchableHighlight,
-  findNodeHandle
+  findNodeHandle,
+  Platform
 } from 'react-native'
 import styles from './GalleryItem.styles'
 import { IGalleryItem } from './GalleryItem.types'
@@ -51,7 +52,11 @@ function GalleryItem({
       onFocus={onFocus}
       onBlur={onBlur}
       hasTVPreferredFocus={hasTVPreferredFocus}
-      style={[styles.wrapper, focus ? styles.wrapperFocused : null]}
+      style={[
+        styles.wrapper,
+        Platform.isTV ? styles.cardSizeTV : styles.cardSize,
+        focus ? styles.wrapperFocused : null
+      ]}
       ref={onRef}
       nextFocusRight={
         blockFocusRight ? findNodeHandle(touchableHighlightRef.current) : null

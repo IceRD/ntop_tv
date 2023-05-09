@@ -14,12 +14,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: scale(7),
-    height: scale(102.35), // 135
-    width: scale(69), // 94
+    // width: scale(69), // 94
+    // height: scale(102.35), // 135
     borderColor: 'transparent',
     borderWidth: 3,
     borderRadius: 8,
     overflow: 'hidden'
+  },
+  cardSize: {
+    width: scale(110 / 1.19),
+    height: scale(165 / 1.19)
+  },
+  cardSizeTV: {
+    width: scale(110 / 1.59),
+    height: scale(165 / 1.59)
   },
   image: {
     width: '100%',

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StatusBar, SafeAreaView, LogBox } from 'react-native'
 import { useNavigationContainerRef } from '@react-navigation/native'
 import NavigationContext from '~/context/navigation'
@@ -7,12 +7,18 @@ import { Provider as ReduxProvider } from 'react-redux'
 import store, { persistor } from '~/store'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { PersistGate } from 'redux-persist/integration/react'
+import SplashScreen from 'react-native-splash-screen'
 
 const App = () => {
   const navigationRef = useNavigationContainerRef()
   const queryClient = new QueryClient()
 
-  LogBox.ignoreLogs(['new NativeEventEmitter'])
+  // LogBox.ignoreLogs(['new NativeEventEmitter'])
+  LogBox.ignoreAllLogs()
+
+  useEffect(() => {
+    SplashScreen.hide()
+  })
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

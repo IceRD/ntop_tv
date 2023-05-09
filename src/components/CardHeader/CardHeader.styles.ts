@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
     marginTop: scale(10),
     flexDirection: 'row',
     width: '100%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
   },
   titleContainer: {
     marginBottom: moderateScale(3)
@@ -25,7 +26,9 @@ const styles = StyleSheet.create({
   ratingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingTop: moderateScale(2),
+    paddingLeft: moderateScale(4)
   },
   rating: {
     fontSize: moderateScale(10),

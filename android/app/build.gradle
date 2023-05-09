@@ -300,6 +300,9 @@ dependencies {
 
     // @react-native-voice/voice
     implementation project(':@react-native-voice_voice')
+
+    // react-native-splash-screen
+    implementation project(':react-native-splash-screen')
     
     implementation "androidx.appcompat:appcompat:1.0.0"
 }

@@ -12,7 +12,7 @@ function CardHeader({ name, year, rating, countries, quality }: IProps) {
 
   return (
     <View style={styles.header}>
-      <View>
+      <View style={{ flex: 1 }}>
         <View style={styles.titleContainer}>
           <Text accessible={false} style={styles.titleContainer_title}>
             {name}

@@ -62,7 +62,6 @@ function VideoPlayerScreen({ route }: IProps) {
   function onSeek(seek) {
     let nextValue = currentTime + seek
     let updateTime = Math.max(0, Math.min(nextValue, duration))
-    x
 
     setCurrentTime(updateTime)
     playerRef.current.seek(updateTime)

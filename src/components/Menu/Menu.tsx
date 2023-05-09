@@ -9,6 +9,7 @@ import Icon from '~/components/Icons'
 import MenuItem from '~/components/MenuItem'
 import { useNavigationRef } from '~/hooks/useNavigationRef'
 import { scale, verticalScale, moderateScale } from '~/utils/scaling'
+import pkg from '~/../package.json'
 
 const Menu = ({}) => {
   // const [focus, setFocus] = useState<boolean>(false)
@@ -46,6 +47,11 @@ const Menu = ({}) => {
               </View>
             )
           })}
+          {/* <View style={styles.versionContainer}>
+            <Text style={styles.version} accessible={false}>
+              {pkg.version}
+            </Text>
+          </View> */}
         </View>
       </ScrollView>
     </View>
