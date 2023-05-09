@@ -18,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     SplashScreen.hide()
-  })
+  },[])
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
